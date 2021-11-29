@@ -12,10 +12,10 @@ app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
   
 var client = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    database: 'add',
-    password: '',
+    user: 'sql5455052',
+    host: 'sql5.freesqldatabase.com',
+    database: 'sql5455052',
+    password: 'SH3kTwaFHq',
     port: 3306,
 });
 
