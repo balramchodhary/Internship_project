@@ -1,5 +1,6 @@
 var express=require('express');
 const mysql=require('mysql');
+const port=process.env.PORT || 8000;
 var path = require('path')
 const bodyparser = require('body-parser');
 const { copyFileSync } = require('fs');
@@ -77,7 +78,7 @@ client.connect(function(err){
     
   });
   
-app.listen(3000,function(){
+app.listen(port,function(){
     console.log("listening prot number 3000");
   });
   
