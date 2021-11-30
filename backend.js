@@ -37,8 +37,27 @@ client.connect(function(err){
   app.get('/signin', function(req, res) {
     res.sendFile(__dirname + "/" + "signin.html");
   });
+  app.get('/addInternship', function(req, res) {
+    res.sendFile(__dirname + "/" + "add_internship.html");
+  });
 
   //this is database operation for backend
+  app.post('/interndetail', function(req, res) {
+    var v1=req.body.cname;
+    var v2=req.body.stipend;
+    var v3=req.body.cpi;
+    var v4=req.body.duration;
+    var query="INSERT into internship_detail(cname,stipund,cpi,duration) values('"+v1+"','"+v2+"','"+v3+"','"+v4+"')";
+    client.query(query, (err,result) => {
+      if (err)
+            res.send(500,'<h1>your company is duplicate so please try agian<h1>') 
+            else {
+                console.log("hello balram");
+                res.send("insert the data successfully");
+            }
+    });
+    
+  });
   app.post('/register', function(req, res) {
     var v1=req.body.fname;
     var v2=req.body.lname;
