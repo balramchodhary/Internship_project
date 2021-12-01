@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Fetch using MySQL and Node.js</title>
+  <title>Document</title>
 </head>
 <body>
     <div class="table-data">
-<h2>Display Data using Node.js & MySQL</h2>
+<h2>Display The data of companies</h2>
     <table border="1">
         <tr>
             <th>S.N</th>
-            <th>Full Name</th>
-            <th>Email Address</th>
-            <th>City</th>
-            <th>Country</th>
-           
+            <th>Company Name</th>
+            <th>Stipend</th>
+            <th>Min cpi</th>
+            <th>duration in (month)</th>
+            <th>Apply</th>
         </tr>
         
         <%
@@ -27,7 +27,7 @@
             <td><%=data.stipund %></td>
             <td><%=data.cpi %></td>
             <td><%=data.duration %></td>
-            
+            <td><a href="">Now</a></td>
         </tr>
         <%  i++; }) %>
         <% } else{ %>
