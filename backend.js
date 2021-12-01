@@ -1,7 +1,8 @@
 var express=require('express');
-const mysql=require('mysql');
+const client=require('./dbms');
 const port=process.env.PORT || 8000;
 var path = require('path')
+var indexRouter=require('./indexRouter');
 const bodyparser = require('body-parser');
 const { copyFileSync } = require('fs');
 
@@ -10,24 +11,15 @@ var app=express();
 // Body-parser middleware
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
-  
-var client = mysql.createConnection({
-    user: 'sql5455052',
-    host: 'sql5.freesqldatabase.com',
-    database: 'sql5455052',
-    password: 'SH3kTwaFHq',
-    port: 3306,
-});
 
-client.connect(function(err){
-    if(err){
-      console.log(err);
-    }else{
-      console.log('you successfully connected!!')
-    }
-  });
-  
+  app.use('/viewInternship',indexRouter);
+  app.set('view engine', 'ejs');
+  app.set('views', path.join(__dirname, 'views'));
   app.use(express.static(path.join(__dirname, 'user')));
+
+
+
+
   app.get('/', function(req, res) {
     res.sendFile(__dirname + "/" + "nav.html");
   });
@@ -40,6 +32,7 @@ client.connect(function(err){
   app.get('/addInternship', function(req, res) {
     res.sendFile(__dirname + "/" + "add_internship.html");
   });
+  
 
   //this is database operation for backend
   app.post('/interndetail', function(req, res) {
@@ -96,6 +89,7 @@ client.connect(function(err){
     });
     
   });
+  
   
 app.listen(port,function(){
     console.log("listening prot number 3000");
