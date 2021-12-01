@@ -19,10 +19,10 @@ app.use(bodyparser.json())
 
 
 
-
   app.get('/', function(req, res) {
-    res.sendFile(__dirname + "/" + "nav.html");
+    res.sendFile(__dirname + "/" + "home.html");
   });
+  
   app.get('/signup', function(req, res) {
     res.sendFile(__dirname + "/" + "signup.html");
   });
@@ -62,7 +62,7 @@ app.use(bodyparser.json())
             res.send(500,'<h1>your email is duplicate so please try agian<h1>') 
             else {
                 console.log("hello balram");
-                res.send("insert the data successfully");
+                res.sendFile(__dirname + "/" + "signin.html");
             }
     });
     
@@ -80,7 +80,7 @@ app.use(bodyparser.json())
                     if(result[i].email==v1&&result[i].passowrd==v2) {
                       console.log(v1);
                       console.log(v2);
-                      res.send("welcome")
+                      res.sendFile(__dirname + "/" + "home_user.html");
                       flag=false;
                     }
               }

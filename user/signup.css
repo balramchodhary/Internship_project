@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(255, 122, 89)
+    }
 .form{
     border: 2px solid red;
 }
