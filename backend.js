@@ -1,5 +1,5 @@
 var express=require('express');
-const client=require('./dbms');
+const client=require('./rdbms');
 const port=process.env.PORT || 8000;
 var path = require('path')
 var indexRouter=require('./indexRouter');
@@ -32,62 +32,67 @@ app.use(bodyparser.json())
   app.get('/addInternship', function(req, res) {
     res.sendFile(__dirname + "/" + "add_internship.html");
   });
-  
+  app.get('/logout', function(req,res){
+    req.logOut();
+    req.session.destroy(function (err) {
+           res.redirect('/'); //Inside a callback… bulletproof!
+       });
+   });
 
   //this is database operation for backend
   app.post('/interndetail', function(req, res) {
-    var v1=req.body.cname;
-    var v2=req.body.stipend;
-    var v3=req.body.cpi;
-    var v4=req.body.duration;
-    var query="INSERT into internship_detail(cname,stipund,cpi,duration) values('"+v1+"','"+v2+"','"+v3+"','"+v4+"')";
-    client.query(query, (err,result) => {
-      if (err)
-            res.send(500,'<h1>your company is duplicate so please try agian<h1>') 
-            else {
-                console.log("hello balram");
-                res.send("insert the data successfully");
-            }
+    var obj={
+      cname:req.body.cname,
+      stipend:req.body.stipend,
+      cpi:req.body.cpi,
+      duration:req.body.duration
+    }
+    client.connect(err => {
+      const collection = client.db("test").collection("details");
+      collection.insertOne(obj, function(err, res) {
+        if (err) throw err;
     });
+    res.send("<h1>hello </h1>");
+      // perform actions on the collection object
+    });
+    
     
   });
   app.post('/register', function(req, res) {
-    var v1=req.body.fname;
-    var v2=req.body.lname;
-    var v3=req.body.email;
-    var v4=req.body.password;
-    var query="INSERT into sigup(fname,lname,email,passowrd) values('"+v1+"','"+v2+"','"+v3+"','"+v4+"')";
-    client.query(query, (err,result) => {
-      if (err)
-            res.send(500,'<h1>your email is duplicate so please try agian<h1>') 
-            else {
-                console.log("hello balram");
-                res.sendFile(__dirname + "/" + "signin.html");
-            }
+    var obj={
+      fname:req.body.fname,
+      lname:req.body.lname,
+      email:req.body.email,
+      password:req.body.password,
+    }
+    client.connect(err => {
+      const collection = client.db("test").collection("test");
+      collection.insertOne(obj, function(err, res) {
+        if (err) throw err;
+    });
+    res.sendFile(__dirname + "/" + "signin.html");
+      // perform actions on the collection object
     });
     
   });
   app.post('/check', function(req, res) {
     var v1=req.body.email;
     var v2=req.body.password;
-    var query="SELECT * FROM `sigup`";
-    client.query(query, (err,result) => {
-      if (err)
-            res.send(err.stack) 
-            else {
-              var flag=true;
-              for(var i=0;i<result.length;i++){
-                    if(result[i].email==v1&&result[i].passowrd==v2) {
-                      console.log(v1);
-                      console.log(v2);
-                      res.sendFile(__dirname + "/" + "home_user.html");
-                      flag=false;
-                    }
-              }
-              if(flag) res.send("sorry");
-            }
+    client.connect(err => {
+      const collection = client.db("test").collection("test");
+      
+     collection.find({}).toArray(function(err, result) {
+      if (err) throw err;
+      for(var i=0;i<result.length;i++){
+        var flag=true;
+        if(v1==result[0].email&&v2==result[0].password){
+          res.sendFile(__dirname + "/" + "home_user.html");
+          flag=false;
+        }
+      }
+      if(flag) res.send("<h1>sorry user password and email is not exist so create account</h1>");
     });
-    
+  });
   });
   
   
