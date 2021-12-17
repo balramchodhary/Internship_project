@@ -18,18 +18,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/signin">AddInternship</a>
+                <a class="nav-link active" aria-current="page" href="/addInternship">AddInternship</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/signin">viewIntership</a>
+                <a class="nav-link active" aria-current="page" href="/viewInternship">viewIntership</a>
               </li>
             </ul>
-            <form class="d-flex" action="/signup" method="get">
-              <button class="btn btn-outline-success" type="submit">signup</button>
-            </form>
-            <form class="d-flex" action="/signin" method="get">
-              <button class="btn btn-outline-success" type="submit">singin</button>
-            </form>
+            <div>
+              <img src="../static_files/logo.jpg" alt="soryy" width="50" height="50">
+            </div>
+            <div><h6>Hello {{userData.fname}}</h6></div>
             <form class="d-flex" action="/logout" method="get">
               <button class="btn btn-outline-danger" type="submit">logout</button>
             </form>

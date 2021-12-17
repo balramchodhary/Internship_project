@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static_files/user-list.css">
 </head>
+
 <body>
-    {{>navbar}}
-    <div class="table-data">
-<h2>Display The data of companies</h2>
-    <table border="1">
-        <tr>
-            <th>S.N</th>
-            <th>Company Name</th>
-            <th>Stipend</th>
-            <th>Min cpi</th>
-            <th>duration in (month)</th>
-            <th>Apply</th>
-        </tr>
-        
-        <%
-        if(userData.length!=0){
-        var i=1;
-        userData.forEach(function(data){
-        %>
-        <tr>
-            <td><%=i; %></td>
-            <td><%=data.cname %></td>
-            <td><%=data.stipend %></td>
-            <td><%=data.cpi %></td>
-            <td><%=data.duration %></td>
-            <td><a href="">Now</a></td>
-        </tr>
-        <%  i++; }) %>
-        <% } else{ %>
-            <tr>
-                <td colspan="7">No Data Found</td>
+    {{>header}}
+    <div class="packet">
+        <div class="slidecontainer">
+            <form action="/viewInternship" method="post">
+                <label for="myRange">select the range of cpi and filter of company:</label>
+                <input name='range' type="range" min="0" max="10" value="0" class="slider" id="myRange"
+                    onchange='rangeSlider(this.value)'>
+                <span id="output">0</span>
+                <button type="submit" class="btn btn-primary">check</button>
+            </form>
+            <script type="text/javascript">
+                function rangeSlider(value) {
+                    document.getElementById('output').innerHTML = value;
+                }
+            </script>
+        </div>
+        <table class="container">
+            <tr class="list">
+                <th><img src="../static_files/logo3.jpg" alt="sorry" width="50" height="50"></th>
+                <th>Company Name</th>
+                <th>Stipend</th>
+                <th>Min cpi</th>
+                <th>duration in (month)</th>
+                <th>Apply</th>
             </tr>
-        <% } %>
-    </table>
+            {{#each details}}
+            <tr class="list">
+                <td>{{this.date}}</td>
+                <td>{{this.cname}}</td>
+                <td>{{this.stipend}}</td>
+                <td>{{this.cpi}}</td>
+                <td>{{this.duration}}</td>
+                <td>
+                    <form action="/submit" method="post">
+                        <input type="hidden" name="demo" value={{this.cname}}>
+                        <button type="submit">Now</button>
+                    </form>
+                </td>
+            </tr>
+
+            {{/each}}
+        </table>
     </div>
+
 </body>
+
 </html>

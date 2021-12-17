@@ -1,0 +1,37 @@
+.packet{
+    display: flex;
+    flex-direction: row;
+}
+.slidecontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 7px;
+    background-color:cyan;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 7px;
+    background-color: cadetblue;
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 7px;
+    background-color: sandybrown;
+    padding: 12px;
+    margin: 12px;
+}
+th{
+    margin: 6px;
+    padding: 20px;
+}

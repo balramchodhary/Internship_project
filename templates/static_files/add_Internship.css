@@ -1,0 +1,11 @@
+body{
+    background-image: url('../static_files/p1.jpg');
+    
+}
+#form{
+    border: 2px solid red;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    margin: auto 200px;
+}
