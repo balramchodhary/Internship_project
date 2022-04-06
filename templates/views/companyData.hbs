@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static_files/user-list.css">
+</head>
+
+<body>
+    {{>adminNav}}
+    <div class="packet">
+        
+        <table class="container">
+            <tr class="list">
+                <th>Student Name</th>
+                <th>Studend email</th>
+                <th>Student Resume</th>
+            </tr>
+            {{#each details}}
+            <tr class="list">
+                <td>{{this.fname}}</td>
+                <td>{{this.email}}</td>
+                <td><p>Open  <a href="../images/{{this.filename}}">resume</a>.</p></td>
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+</body>
+
+</html>

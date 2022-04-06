@@ -17,10 +17,14 @@
 
 <body>
     {{>header}}
-    <form action="/final-submit" method="post" id="form">
+    <form action="/final-submit" method="post" enctype="multipart/form-data" id="form">
+        <div>
+            <label for="cpi">Enter your cpi</label>
+            <input type="text" name="cpi" id="cpi" placeholder="your current cpi">
+        </div>
         <div class="item">
             <label for="myfile">Select a resume pdf file:</label>
-            <input type="file" id="myfile" name="myfile">
+            <input type="file" accept=".pdf" id="myfile" name="image">
         </div>
         <button type="submit" class="btn btn-primary item">submit</button>
     </form>

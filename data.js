@@ -1,6 +1,15 @@
 var userData={
     cname:"Na",
     fname:"Na",
-    email:"Na"
+    email:"Na",
+    result:"Na"
 }
-module.exports=userData;
+var registerData={
+    fname:"Na",
+    lname:"Na",
+    email:"Na",
+    phone:"Na",
+    password:"Na",
+    otp:"Na"
+}
+module.exports={userData,registerData};

@@ -15,7 +15,13 @@ var Schema1=new mongoose.Schema({
         type:String,
         require:true,
         unique:true
-    },
+    }
+    ,
+    phone:{
+        type:String,
+        require:true,
+    }
+    ,
     password:{
         type:String,
         require:true

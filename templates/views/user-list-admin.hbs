@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static_files/user-list.css">
+</head>
+
+<body>
+    {{>adminNav}}
+    <div class="packet">
+        <div class="slidecontainer">
+            <form action="/viewInternship" method="get">
+                <label for="myRange">select the range of cpi and filter of company:</label>
+                <input name='range' type="range" min="0" max="10" value="0" class="slider" id="myRange"
+                    onchange='rangeSlider(this.value)'>
+                <span id="output">0</span>
+                <button type="submit" class="btn btn-primary">check</button>
+            </form>
+            <script type="text/javascript">
+                function rangeSlider(value) {
+                    document.getElementById('output').innerHTML = value;
+                }
+            </script>
+        </div>
+        <table class="container">
+            <tr class="list">
+                <th><img src="../static_files/logo3.jpg" alt="sorry" width="50" height="50"></th>
+                <th>Company Name</th>
+                <th>Stipend</th>
+                <th>Min cpi</th>
+                <th>duration in (month)</th>
+                <th>Response</th>
+            </tr>
+            {{#each details}}
+            <tr class="list">
+                <td>{{this.date}}</td>
+                <td>{{this.cname}}</td>
+                <td>{{this.stipend}}</td>
+                <td>{{this.cpi}}</td>
+                <td>{{this.duration}}</td>
+                <td>
+                    <form action="/check-Response" method="post">
+                        <input type="hidden" name="demo" value={{this.cname}}>
+                        <button type="submit">Check</button>
+                    </form>
+                </td>
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+</body>
+
+</html>

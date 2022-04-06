@@ -12,6 +12,11 @@ var Schema1=new mongoose.Schema({
     email:{
         type:String,
         require:true
+    },
+    filename:{
+        type:String,
+        require:true,
+        unique:true
     }
 })
 

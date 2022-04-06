@@ -1,6 +1,7 @@
 
 require('./rdbms');
 var Details=require("./models/details");
+var Company=require("./models/company")
 const express=require('express');
 const await = require('await');
 const bodyparser = require('body-parser');
@@ -12,17 +13,10 @@ const userData=require('./data')
 // this script to fetch data from MySQL databse table
 router.get('/', auth,async(req, res, next)=> {
   try {
-    var result=await Details.find({});
-    res.render('user-list', { title: 'company details', details: result,userData:userData});
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
-router.post('/', auth,async(req, res, next)=> {
-  try {
-    const range=req.body.range;
-    var result=await Details.find({cpi: {$gte:range}});
-    res.render('user-list', { title: 'company details', details: result,userData:userData});
+    if(userData.email=='admin@gmail.com')
+    res.render('user-list-admin', { title: 'company details', details: userData.result,userData:userData});
+    else 
+    res.render('user-list', { title: 'company details', details: userData.result,userData:userData});
   } catch (error) {
     res.status(400).send(error);
   }
