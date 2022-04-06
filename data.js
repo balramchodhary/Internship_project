@@ -2,7 +2,9 @@ var userData={
     cname:"Na",
     fname:"Na",
     email:"Na",
-    result:"Na"
+    password:"Na",
+    result1:"Na",
+    result2:"Na"
 }
 var registerData={
     fname:"Na",

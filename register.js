@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
     
   } catch (error) {
     console.log(error)
-    res.status(400).send("<h1>User already exists</h1>")
+    res.status(400).send("<h1>otp is not send successfully</h1>")
   }
 
 });

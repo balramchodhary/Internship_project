@@ -13,7 +13,7 @@
     {{>adminNav}}
     <div class="packet">
         <div class="slidecontainer">
-            <form action="/viewInternship" method="get">
+            <form action="/viewInternship" method="post">
                 <label for="myRange">select the range of cpi and filter of company:</label>
                 <input name='range' type="range" min="0" max="10" value="0" class="slider" id="myRange"
                     onchange='rangeSlider(this.value)'>

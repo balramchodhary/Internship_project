@@ -26,9 +26,10 @@ router.post('/',auth,async (req, res) => {
       })
   
       var Det = await D.save();
-      res.render("successMsg")
+      res.status(201).render("successMsg",{msg1 : "you successfully added new internship",
+              msg2: "your data successfully inserted data into database"});
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).send('<h1>sorry this company already added</h1>');
     }
   });
   module.exports = router;
