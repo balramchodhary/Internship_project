@@ -123,7 +123,7 @@ app.post('/final-submit', upload.single('image'),auth, async (req, res) => {
   
     var details=await Details.findOne({cname: data.userData.cname})
     
-    if(parseFloat(req.body.cpi)<parseFloat(details.cpi)) res.send("<h1>your cpi is low</h1>")
+    if(parseFloat(req.body.cpi)<parseFloat(details.cpi)) res.render('errorMsg.hbs',{msg:"your cpi is low so pleas try again"})
     else{
       var Det = await D.save();
       res.status(201).render("successMsg",{msg1 : `you successfully applied on ${data.userData.cname}`,
