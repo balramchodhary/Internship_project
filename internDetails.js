@@ -29,7 +29,7 @@ router.post('/',auth,async (req, res) => {
       res.status(201).render("successMsg",{msg1 : "you successfully added new internship",
               msg2: "your data successfully inserted data into database"});
     } catch (error) {
-      res.status(400).send('<h1>sorry this company already added</h1>');
+      res.render('errorMsg.hbs',{msg:"this company already exist so please enter valid company name"})
     }
   });
   module.exports = router;

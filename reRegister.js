@@ -56,8 +56,7 @@ router.get('/', async (req, res) => {
       
     
   } catch (error) {
-    console.log(error)
-    res.status(400).send("<h1>otp not send successfully</h1>")
+    res.render('errorMsg.hbs',{msg:"otp is not send successfully so please try after some time"})
   }
 
 });

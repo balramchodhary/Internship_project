@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
   
     }
     catch (error) {
-      res.status(400).send(error);
+      res.render('errorMsg.hbs',{msg:"your query is not fetch successfully from database so please try after some time"})
     }
   });
 

@@ -34,7 +34,7 @@ router.post("/",async(req,res)=>{
             res.send("<h1>sorry otp is worng</h1>")
         }
     } catch (err) {
-        res.status(400).send("<h1>User already exists</h1>")
+        res.render('errorMsg.hbs',{msg:"user already exist into database so use different email account"})
     }
 })
 module.exports = router;

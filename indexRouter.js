@@ -20,8 +20,7 @@ router.get('/', auth,async(req, res, next)=> {
     else 
     res.render('user-list', { title: 'company details', details: userData.result1,userData:userData});
   } catch (error) {
-    console.log(error)
-    res.status(400).send(error);
+    res.render('errorMsg.hbs',{msg:"details  are not fetch from database so please try after some time"})
   }
 });
 
@@ -37,8 +36,7 @@ router.post('/', auth,async(req, res, next)=> {
       res.render('user-list', { title: 'company details', details: result,userData:userData});
     }
   } catch (error) {
-    console.log(error)
-    res.status(400).send(error);
+    res.render('errorMsg.hbs',{msg:"details  are not fetch from database so please try after some time"})
   }
 });
 module.exports = router;

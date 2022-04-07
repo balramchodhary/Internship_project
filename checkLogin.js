@@ -72,8 +72,7 @@ router.post('/', async (req, res) => {
       else res.send("<h1>your login unsuccessful</h1>")
   
     } catch (error) {
-      console.log(error)
-      res.status(400).send(error);
+      res.render('errorMsg.hbs',{msg:"your user name and password are wrong please try again"})
     }
   });
 

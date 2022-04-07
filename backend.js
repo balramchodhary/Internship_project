@@ -93,21 +93,9 @@ app.get('/logout', async (req, res) => {
     res.clearCookie('jwt')
     res.status(201).render("signin")
   } catch (error) {
-    res.status(401).send(error)
+    res.render('errorMsg.hbs',{msg:"you cannot logout due to some error"})
   }
 });
-
-//this is database operation for backend
-app.post('/viewPreviousInternship',auth,async (req,res)=>{
-  try{
-    //here we write a code
-  }catch (error) {
-    res.status(400).send(error);
-  }
-})
-
-
-
 
 
 app.post('/submit', auth, function (req, res) {
@@ -142,8 +130,7 @@ app.post('/final-submit', upload.single('image'),auth, async (req, res) => {
               msg2: "your data successfully inserted data into database"});
     }
   } catch (error) {
-    console.log(error)
-    res.status(400).send(error);
+    res.render('errorMsg.hbs',{msg:"some error is occurred so please try after some time"})
   }
 })
 
