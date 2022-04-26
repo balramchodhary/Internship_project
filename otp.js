@@ -6,11 +6,12 @@ const await = require('await');
 const bodyparser = require('body-parser');
 var router = express.Router();
 const data = require('./data')
+const auth=require('./auth')
 
 
 
 
-router.post("/",async(req,res)=>{
+router.post("/",auth,async(req,res)=>{
     try {
         var otp=req.body.otp1+req.body.otp2+req.body.otp3+req.body.otp4;
         if(parseInt(otp)===parseInt(data.registerData.otp)){

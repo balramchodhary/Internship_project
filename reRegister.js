@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
         
         from: '"verify your email"<balramchoudhary314@gmail.com>',
         to:data.registerData.email,
-        subject:'codewithsid --verify your email',
+        subject:'--verify your email',
         html:`<h1>${data.registerData.fname}! thank for registering in our web</h1>
         <h3>please enter otp ${otp}</h3>
         `

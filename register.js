@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
         
         from: '"verify your email"<balramchoudhary314@gmail.com>',
         to:req.body.email,
-        subject:'codewithsid --verify your email',
+        subject:'--verify your email',
         html:`<h1>${req.body.fname}! thank for registering in our web</h1>
         <h3>please enter otp ${otp}</h3>
         `
