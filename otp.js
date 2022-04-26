@@ -11,7 +11,7 @@ const auth=require('./auth')
 
 
 
-router.post("/",auth,async(req,res)=>{
+router.post("/",async(req,res)=>{
     try {
         var otp=req.body.otp1+req.body.otp2+req.body.otp3+req.body.otp4;
         if(parseInt(otp)===parseInt(data.registerData.otp)){
