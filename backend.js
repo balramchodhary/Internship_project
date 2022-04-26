@@ -79,7 +79,7 @@ app.get('/', function (req, res) {
 app.get('/signup', function (req, res) {
   res.render("signup");
 });
-app.get('/send-otp',auth,function(req,res){
+app.get('/send-otp',function(req,res){
   res.render("otp",{email:data.registerData.email})
 })
 app.get('/signin', function (req, res) {
