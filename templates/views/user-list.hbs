@@ -27,33 +27,59 @@
             </script>
         </div>
         <table class="container">
-            <tr class="list">
+            
+            {{!-- <tr class="list">
                 <th><img src="../static_files/logo3.jpg" alt="sorry" width="50" height="50"></th>
                 <th>Company Name</th>
                 <th>Stipend</th>
                 <th>Min cpi</th>
                 <th>duration in (month)</th>
                 <th>Apply</th>
-            </tr>
+            </tr> --}}
             {{#each details}}
             <tr class="list">
-                <td>{{this.date}}</td>
-                <td>{{this.cname}}</td>
-                <td>{{this.stipend}}</td>
-                <td>{{this.cpi}}</td>
-                <td>{{this.duration}}</td>
+                <td ><img width="40px" height="40px" src="../static_files/logo3.jpg" alt="sorry"> </td>
+                 <td class="td" >timer {{this.date}}</td>
+                 <td  class="td"><p id="TCS" ></p></td>
+                <tr class="subList">
+                   <td class="td">{{this.cname}}</td>
+                   <td class="td">stipend {{this.stipend}}</td>
+                   <td class="td">cuttoff {{this.cpi}}</td>
+                   <td class="td">duration {{this.duration}}</td>
+                </tr>
                 <td>
                     <form action="/submit" method="post">
                         <input type="hidden" name="demo" value={{this.cname}}>
-                        <button type="submit">Now</button>
+                        <button type="submit">Apply</button>
                     </form>
                 </td>
             </tr>
+            
+            {{!-- <script>
+                setInterval(function(){
+                var dest=new Date("oct 3, 2022 10:00:00").getTime()
+                
+                var curr=new Date().getTime()
+                var diff=dest-curr
+                var frc=diff/(24*1000*60*60);
+                var days=Math.floor(frc);
+                var hfrc=(frc-days)*24;
+                var hour=Math.floor(hfrc)
+                var mfrc=(hfrc-hour)*60;
+                var min=Math.floor(mfrc)
+                var sec=Math.floor((mfrc-min)*60);
+                console.log(days)
+                console.log(hour)
+                console.log(min)
+                console.log(sec)
+                document.getElementById("TCS").innerHTML=days+" d,"+hour+":"+min+":"+sec
+            },1000)
 
+            </script> --}}
             {{/each}}
         </table>
     </div>
-
+     
 </body>
 
 </html>

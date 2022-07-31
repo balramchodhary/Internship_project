@@ -13,12 +13,13 @@
 }
 .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     border: 2px solid red;
     border-radius: 7px;
     background-color: cadetblue;
+    
 }
 .list{
     display: flex;
@@ -27,11 +28,32 @@
     align-items: center;
     border: 2px solid red;
     border-radius: 7px;
-    background-color: sandybrown;
+     background-color: aqua;
     padding: 12px;
     margin: 12px;
+
+
+} 
+
+.subList{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    /* border: 2px solid red; */
+    /* border-radius: 7px; */
+    background-color:aqua;
+    height: 200px;
+    width: 400px;
 }
+
+
 th{
     margin: 6px;
     padding: 20px;
 }
+.td{
+    
+    color:black;
+    width: 200px;
+} 
